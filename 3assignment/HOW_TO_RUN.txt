@@ -1,0 +1,14 @@
+Save the server code and client code in separate files with ".py" extension, for example, "server.py" and "client.py" respectively.
+Open two separate terminal windows and navigate to the directory where the files are saved.
+In one terminal window, run the server code by entering the command "python server.py". This will start the server and it will be ready to accept client connections.
+In the other terminal window, run the client code by entering the command "python client.py". This will connect the client to the server.
+The client will prompt the user for input to perform the transactions. Enter the commands as shown in the Example Usage section in the previous answer and observe the responses from the server.
+Note: The server and client must be run on the same machine for this example. If you want to run the server and client on different machines, you will need to modify the server code to listen on the appropriate IP address and port and modify the client code to connect to the correct IP address and port.
+
+
+CREATE_ACCOUNT kumudini 100(This will create a new account named "john" with an initial balance of $50)
+CHECK_BALANCE kumudini (This will check the balance of the "john" account)
+DEPOSIT kumudini 200(This will deposit $10 into the "john" account)
+WITHDRAW kumudini 100 (This will attempt to withdraw $20 from the "john" account)
+CHECK_BALANCE kumudini(This will check the balance of the "john" account again)
+

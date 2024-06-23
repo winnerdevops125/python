@@ -1,0 +1,36 @@
+Protocol Description:
+
+The client/server application will use a request/response protocol. The protocol will have the following message types:
+
+CREATE_ACCOUNT <account_name> <initial_balance>: This message will be sent by the client to create an account with a given name and initial balance.
+DEPOSIT <account_name> <amount>: This message will be sent by the client to deposit a given amount of money into an account with a given name.
+WITHDRAW <account_name> <amount>: This message will be sent by the client to withdraw a given amount of money from an account with a given name.
+CHECK_BALANCE <account_name>: This message will be sent by the client to check the balance of an account with a given name.
+RESPONSE <response_code> <response_message>: This message will be sent by the server to indicate the success or failure of a client request. The response code will be an integer and the response message will be a string.
+The server will maintain a dictionary of accounts, where the keys are the account names and the values are the account balances.
+
+Server Implementation:
+
+The server application will use the socket module in Python to listen for connections from clients. Once a connection is established, the server will receive messages from the client, process the request, and send a response back to the client.
+
+The server will maintain a dictionary of accounts, where the keys are the account names and the values are the account balances. The server will process each request as follows:
+
+CREATE_ACCOUNT: If the account name does not already exist, the server will create a new account with the given name and initial balance. If the account name already exists, the server will send a RESPONSE message back to the client with a response code of 1 and a response message indicating that the account already exists.
+
+DEPOSIT: If the account name exists, the server will add the given amount to the account balance. If the account name does not exist, the server will send a RESPONSE message back to the client with a response code of 2 and a response message indicating that the account does not exist.
+
+WITHDRAW: If the account name exists and the account balance is greater than or equal to the given amount, the server will subtract the given amount from the account balance. If the account name does not exist, the server will send a RESPONSE message back to the client with a response code of 2 and a response message indicating that the account does not exist. If the account balance is less than the given amount, the server will send a RESPONSE message back to the client with a response code of 3 and a response message indicating that there are insufficient funds.
+
+CHECK_BALANCE: If the account name exists, the server will send a RESPONSE message back to the client with a response code of 0 and a response message indicating the account balance. If the account name does not exist, the server will send a RESPONSE message back to the client with a response code of 2 and a response message indicating that the account does not exist.
+
+Client Implementation:
+
+The client application will use the socket module in Python to connect to the server. The client will send messages to the server using the protocol described above and will receive responses from the server.
+
+The client will prompt the user for input to perform the following transactions:
+
+Create an account: The user will input the account name and initial balance.
+Make a deposit: The user will input the account name and the amount to deposit.
+Make a withdrawal: The user will input the account name and the amount to withdraw.
+Check the balance: The user will input the account name to check the balance.
+The client will send the appropriate message to the server and receive a response. The response will be displayed
